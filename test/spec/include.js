@@ -6,7 +6,7 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
-  it('should process @include processing instructions', function(done) {
+  it('should process @include pi', function(done) {
     var source = 'test/fixtures/include.md'
       , target = 'target/include.json.log'
       , parser = new Parser()

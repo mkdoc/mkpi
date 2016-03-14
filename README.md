@@ -6,6 +6,7 @@ Table of Contents
   * [API](#api)
     * [pi](#pi)
       * [Options](#options)
+    * [code](#code)
     * [exec](#exec)
     * [include](#include)
   * [License](#license)
@@ -47,6 +48,23 @@ Returns an output stream.
 * `input` Readable=process.stdin input stream.
 * `output` Writable=process.stdout output stream.
 
+### code
+
+```javascript
+code(tag, state, cb)
+```
+
+Mark a result as appearing in a fenced code block, that tag name and
+description become the info string delimited by a single space.
+
+```html
+<? @code javascript ?>
+```
+
+* `tag` Object parsed tag data.
+* `state` Object processing instruction state.
+* `cb` Function callback function.
+
 ### exec
 
 ```javascript
@@ -54,6 +72,10 @@ exec(tag, state, cb)
 ```
 
 Run an external command.
+
+```html
+<? @exec pwd ?>
+```
 
 Newlines are removed from the tag data so a command
 may span multiple lines.
