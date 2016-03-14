@@ -14,7 +14,7 @@ Processing instructions in included files are also executed, paths are resolved 
 
 ### @exec
 
-Execute a command and parse the stdout result into the AST stream:
+Execute a command and parse the result into the AST stream:
 
 ```html
 <? @exec pwd ?>
