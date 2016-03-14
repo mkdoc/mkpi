@@ -26,6 +26,16 @@ To capture the stderr stream:
 <? @exec {err} pwd ?>
 ```
 
+An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@fails` tag:
+
+
+```html
+<?
+  @fails
+  @exec {err} pwd 
+?>
+```
+
 ### @source
 
 Load a file and wrap it in a fenced code block, the tag `type` is the info string:
