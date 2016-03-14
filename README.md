@@ -51,6 +51,12 @@ Include one or more markdown documents into the AST stream:
 
 Processing instructions in included files are also executed, paths are resolved relative to the owner document when a file is available.
 
+You can specify a path to include from using the tag `type`:
+
+```html
+<? @include {path/to/folder} intro.md install.md license.md ?>
+```
+
 ### @exec
 
 Execute a command and parse the result into the AST stream:
@@ -153,6 +159,12 @@ in included files are executed.
 
 ```html
 <? @include intro.md install.md ?>
+```
+
+If a type is given it is a relative path to include from:
+
+```html
+<? @include {path/to/folder} intro.md install.md ?>
 ```
 
 Include files are resolved relative to the including file when file
