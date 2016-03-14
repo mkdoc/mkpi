@@ -1,49 +1,65 @@
-var deserialize = require('mkast').deserialize
-  , types = {
-      markdown: './lib/render/markdown',
-      xml: 'commonmark/lib/xml',
-      html: 'commonmark/lib/render/html'
-    }
+var mkast = require('mkast')
+  , EOL = require('os').EOL
+  , attach = require('mkast/lib/attach')
+  , through = require('through3');
 
 /**
- *  Print via a renderer to an output stream.
+ *  Stream that transforms the incoming AST.
  *
- *  @function out
+ *  @constructor Parser
+ */
+function Parser() {}
+
+/**
+ *  @private
+ */
+function parser(chunk, encoding, cb) {
+  var node = attach(chunk);
+  if(node._type === 'html_block' && node._htmlBlockType === 3) {
+    console.dir(node);
+    return cb();
+  }
+
+  // pass through untouched
+  this.push(chunk);
+  cb();
+}
+
+/**
+ *  @private
+ */
+function stringify(chunk, encoding, cb) {
+  this.push(JSON.stringify(chunk) + EOL);
+  cb();
+}
+
+
+var ParserStream = through.transform(parser, {ctor: Parser})
+  , Stringify = through.transform(stringify);
+
+/**
+ *  Execute processing instructions found in the AST.
+ *
+ *  @function pi
  *  @param {Object} [opts] processing options.
  *  @param {Function} [cb] callback function.
  *
- *  @option {String} [type] output type.
  *  @option {Readable=process.stdin} [input] input stream.
  *  @option {Writable=process.stdout} [output] output stream.
- *  @option {Object} [render] renderer options.
  *
  *  @returns an output stream.
  */
-function out(opts, cb) {
+function pi(opts, cb) {
   opts = opts || {};
   opts.input = opts.input || process.stdin;
   opts.output = opts.output || process.stdout;
-  opts.type = opts.type || 'markdown';
-  opts.render = opts.render || {stream: process.stdout};
 
-  if(opts.type === 'json') {
-    opts.input.pipe(opts.output);
-    return opts.output; 
-  }
+  var transform = new ParserStream();
 
-  if(!types[opts.type]) {
-    return cb(new Error('unknown output type: ' + opts.type)); 
-  }
-
-  var Type = require(types[opts.type])
-    , renderer = new Type(opts.render);
-
-  deserialize(opts.input, function(err, doc) {
-    if(err) {
-      return cb(err); 
-    }
-    opts.output.write(renderer.render(doc), cb);
-  });
+  mkast.parser(opts.input)
+    .pipe(transform)
+    .pipe(new Stringify())
+    .pipe(opts.output);
 
   if(cb) {
     opts.output
@@ -54,7 +70,4 @@ function out(opts, cb) {
   return opts.output;
 }
 
-// supported renderer types
-out.types = types;
-
-module.exports = out;
+module.exports = pi;

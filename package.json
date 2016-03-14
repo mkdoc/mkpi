@@ -20,7 +20,9 @@
     "instruction"
   ],
   "dependencies": {
-    "mkast": "~1.1.0"
+    "commonmark": "tmpfs/commonmark.js",
+    "mkast": "~1.1.0",
+    "through3": "~1.1.5"
   },
   "devDependencies": {
     "chai": "~3.5.0",
