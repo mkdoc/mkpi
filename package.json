@@ -33,6 +33,7 @@
   "scripts": {
     "lint": "jshint . && jscs .",
     "clean": "rm -rf coverage",
+    "docs": "npm run readme",
     "readme": "mdp --force -v",
     "pretest": "rm -rf target && mkdir target",
     "test": "NODE_ENV=test mocha ${SPEC:-test/spec}",
@@ -52,7 +53,8 @@
       {
         "inc": [
           "introduction.md",
-          "install.md"
+          "install.md",
+          "grammar.md"
         ]
       },
       {

@@ -3,6 +3,8 @@ Table of Contents
 
 * [Processing Instructions](#processing-instructions)
   * [Install](#install)
+  * [Grammar](#grammar)
+    * [@include](#include)
   * [API](#api)
     * [pi](#pi)
       * [Options](#options)
@@ -27,6 +29,20 @@ npm i mkpi --save
 ```
 
 For the command line interface install [mkdoc](https://github.com/mkdoc/mkdoc) globally (`npm i -g mkdoc`).
+
+## Grammar
+
+The default processing instruction grammar includes functions for including markdown documents, executing commands and wrapping results in fenced code blocks.
+
+### @include
+
+Include one or more markdown documents into the AST stream:
+
+```html
+<? @include intro.md install.md license.md ?>
+```
+
+Processing instructions in included files are also executed, paths are resolved relative to the owner document when a file is available.
 
 ## API
 
@@ -54,7 +70,7 @@ Returns an output stream.
 code(tag, state, cb)
 ```
 
-Mark a result as appearing in a fenced code block, that tag name and
+Mark a result as appearing in a fenced code block, the tag name and
 description become the info string delimited by a single space.
 
 ```html
