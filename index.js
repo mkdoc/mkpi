@@ -1,6 +1,6 @@
 var mkast = require('mkast')
+  , Serialize = require('mkast/lib/serialize')
   , mkparse = require('mkparse')
-  , EOL = require('os').EOL
   , through = require('through3');
 
 /**
@@ -8,24 +8,65 @@ var mkast = require('mkast')
  *
  *  @constructor Parser
  */
-function Parser() {}
+function Parser(opts) {
+  opts = opts || {};
+  this.grammar = opts.grammar || require('./grammar');
+}
 
 /**
  *  @private
  */
 function parser(chunk, encoding, cb) {
-  var comment;
+  var comment
+    , state = {file: this._file}
+    , scope = this
+    , grammar = this.grammar;
+
+  function execute() {
+    var tags = comment.tags.slice();
+
+    function next(err) {
+      if(err) {
+        return cb(err); 
+      }
+      var tag = tags.shift();
+      // all done
+      if(!tag) {
+        return cb(); 
+      }
+      if(grammar[tag.id] instanceof Function) {
+        return grammar[tag.id].call(scope, tag, state, next); 
+      }
+      next();
+    }
+
+    // start processing
+    next();
+  }
 
   function onComment(res) {
     comment = res;
   }
 
   function onFinish(err) {
-    console.dir(comment); 
-    cb(err); 
+    if(err) {
+      return cb(err); 
+    }
+
+    // something went wrong, could not find comment
+    if(!comment) {
+      return cb(); 
+    }
+
+    // execute the processing instructions
+    execute();
   }
 
-  if(chunk._type === 'html_block' && chunk._htmlBlockType === 3) {
+  if(chunk._type === 'document') {
+    this._file = chunk._file;
+  }else if(chunk._type === 'eof') {
+    this._file = null;
+  }else if(chunk._type === 'html_block' && chunk._htmlBlockType === 3) {
     var str = chunk._literal
       , stream = mkparse.parse(
           str, {rules: require('mkparse/lang/pi')}, onFinish);
@@ -37,16 +78,7 @@ function parser(chunk, encoding, cb) {
   cb();
 }
 
-/**
- *  @private
- */
-function stringify(chunk, encoding, cb) {
-  this.push(JSON.stringify(chunk) + EOL);
-  cb();
-}
-
-var ParserStream = through.transform(parser, {ctor: Parser})
-  , Stringify = through.transform(stringify);
+var ParserStream = through.transform(parser, {ctor: Parser});
 
 /**
  *  Execute processing instructions found in the AST.
@@ -69,7 +101,7 @@ function pi(opts, cb) {
 
   mkast.parser(opts.input)
     .pipe(transform)
-    .pipe(new Stringify())
+    .pipe(new Serialize())
     .pipe(opts.output);
 
   if(cb) {

@@ -1,1 +1,3 @@
-<? @include inc.md ?>
+<? 
+  @include inc.md 
+?>
