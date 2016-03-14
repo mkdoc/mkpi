@@ -3,3 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/mkdoc/mkpi/badge.svg?branch=master&service=github&v=3)](https://coveralls.io/github/mkdoc/mkpi?branch=master)
 
 Parses processing instructions in an input AST document and executes the instructions according to a grammar file.
+
+Uses the [mkparse][] library to form a DSL based on tags declared in processing instructions `<? ... ?>`.
+
+Reads newline-delimited JSON records from an input stream, interprets and executes the instructions and writes the modified AST to the output stream.

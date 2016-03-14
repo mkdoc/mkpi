@@ -1,6 +1,6 @@
 ## Grammar
 
-The default processing instruction grammar includes functions for including markdown documents, executing commands and wrapping results in fenced code blocks.
+The default processing instruction grammar includes functions for including markdown documents, executing commands and more.
 
 ### @include
 
