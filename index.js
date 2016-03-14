@@ -1,6 +1,6 @@
 var mkast = require('mkast')
+  , mkparse = require('mkparse')
   , EOL = require('os').EOL
-  , attach = require('mkast/lib/attach')
   , through = require('through3');
 
 /**
@@ -14,12 +14,24 @@ function Parser() {}
  *  @private
  */
 function parser(chunk, encoding, cb) {
-  var node = attach(chunk);
-  if(node._type === 'html_block' && node._htmlBlockType === 3) {
-    console.dir(node);
-    return cb();
+  var comment;
+
+  function onComment(res) {
+    comment = res;
   }
 
+  function onFinish(err) {
+    console.dir(comment); 
+    cb(err); 
+  }
+
+  if(chunk._type === 'html_block' && chunk._htmlBlockType === 3) {
+    var str = chunk._literal
+      , stream = mkparse.parse(
+          str, {rules: require('mkparse/lang/pi')}, onFinish);
+    stream.on('comment', onComment);
+    return;
+  }
   // pass through untouched
   this.push(chunk);
   cb();
@@ -32,7 +44,6 @@ function stringify(chunk, encoding, cb) {
   this.push(JSON.stringify(chunk) + EOL);
   cb();
 }
-
 
 var ParserStream = through.transform(parser, {ctor: Parser})
   , Stringify = through.transform(stringify);
