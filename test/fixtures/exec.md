@@ -1,3 +1,0 @@
-<?
-  @exec command -v sh
-?>

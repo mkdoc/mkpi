@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var path = require('path');
+console.error(path.basename(__filename));

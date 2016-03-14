@@ -6,13 +6,13 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
-  it('should process @exec pi (pwd)', function(done) {
-    var source = 'test/fixtures/exec.md'
+  it('should process @exec pi (stdout)', function(done) {
+    var source = 'test/fixtures/exec-stdout.md'
       , target = 'target/exec.json.log'
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [
-          '<?\n  @exec command -v sh\n?>'
+          '<?\n  @exec test/bin/exec-stdout\n?>'
         ]
 
     // mock file for correct relative path
@@ -36,7 +36,7 @@ describe('mkpi:', function() {
 
       // skip the open document
 
-      expect(result[3]._firstChild._literal).to.eql('/bin/sh');
+      expect(result[3]._firstChild._literal).to.eql('exec-stdout');
 
       done(err);
     })

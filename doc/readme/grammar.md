@@ -11,3 +11,11 @@ Include one or more markdown documents into the AST stream:
 ```
 
 Processing instructions in included files are also executed, paths are resolved relative to the owner document when a file is available.
+
+### @exec
+
+Execute a command and parse the stdout result into the AST stream:
+
+```html
+<? @exec pwd ?>
+```
