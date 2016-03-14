@@ -54,6 +54,14 @@
           "introduction.md",
           "install.md"
         ]
+      },
+      {
+        "bin": "mkapi index.js lib/*.js --level=2 --title=API"
+      },
+      {
+        "inc": [
+          "license.md"
+        ]
       }
     ]
   }
