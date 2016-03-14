@@ -1,4 +1,4 @@
-## Grammar
+## Macros
 
 The default processing instruction grammar includes functions for including markdown documents, executing commands and more.
 

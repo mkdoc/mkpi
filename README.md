@@ -3,7 +3,7 @@ Table of Contents
 
 * [Processing Instructions](#processing-instructions)
   * [Install](#install)
-  * [Grammar](#grammar)
+  * [Macros](#macros)
     * [@include](#include)
     * [@exec](#exec)
     * [@source](#source)
@@ -11,6 +11,7 @@ Table of Contents
     * [pi](#pi)
       * [Options](#options)
     * [exec](#exec)
+    * [grammar](#grammar)
     * [include](#include)
     * [source](#source)
   * [License](#license)
@@ -22,7 +23,7 @@ Processing Instructions
 [<img src="http://img.shields.io/npm/v/mkpi.svg?v=3" alt="npm version">](https://npmjs.org/package/mkpi)
 [<img src="https://coveralls.io/repos/mkdoc/mkpi/badge.svg?branch=master&service=github&v=3" alt="Coverage Status">](https://coveralls.io/github/mkdoc/mkpi?branch=master).
 
-Parses processing instructions in an input AST document and executes the instructions according to a grammar file.
+Parses and executes processing instructions according to macro functions defined by a grammar.
 
 Uses the [mkparse](https://github.com/mkdoc/mkparse) library to form a DSL based on tags declared in processing instructions `<? ... ?>`.
 
@@ -36,7 +37,7 @@ npm i mkpi --save
 
 For the command line interface install [mkdoc](https://github.com/mkdoc/mkdoc) globally (`npm i -g mkdoc`).
 
-## Grammar
+## Macros
 
 The default processing instruction grammar includes functions for including markdown documents, executing commands and more.
 
@@ -100,6 +101,7 @@ Returns an output stream.
 
 * `input` Readable=process.stdin input stream.
 * `output` Writable=process.stdout output stream.
+* `grammar` Object grammar macro functions.
 
 ### exec
 
@@ -135,6 +137,14 @@ may span multiple lines.
 * `tag` Object parsed tag data.
 * `state` Object processing instruction state.
 * `cb` Function callback function.
+
+### grammar
+
+```javascript
+grammar
+```
+
+Default map of tag names to grammar macro functions.
 
 ### include
 

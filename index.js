@@ -11,6 +11,7 @@ var mkast = require('mkast')
  *
  *  @option {Readable=process.stdin} [input] input stream.
  *  @option {Writable=process.stdout} [output] output stream.
+ *  @option {Object} [grammar] grammar macro functions.
  *
  *  @returns an output stream.
  */
@@ -20,7 +21,11 @@ function pi(opts, cb) {
   opts.output = opts.output || process.stdout;
 
   var serialize = new Serialize()
-    , parser = new Parser({serializer: serialize});
+    , options = {
+        grammar: opts.grammar,
+        serialize: opts.serialize
+      }
+    , parser = new Parser(options);
 
   mkast.parser(opts.input)
     .pipe(parser)
