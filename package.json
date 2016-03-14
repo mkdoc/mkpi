@@ -1,7 +1,7 @@
 {
   "name": "mkpi",
-  "version": "1.0.2",
-  "description": "Output renderers for commonmark",
+  "version": "1.0.0",
+  "description": "Processing instruction tool",
   "author": "muji",
   "license": "MIT",
   "repository": {
