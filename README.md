@@ -161,7 +161,7 @@ in included files are executed.
 <? @include intro.md install.md ?>
 ```
 
-If a type is given it is a relative path to include from:
+If a type is given it is a relative or absolute path to include from:
 
 ```html
 <? @include {path/to/folder} intro.md install.md ?>
