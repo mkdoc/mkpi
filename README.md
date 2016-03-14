@@ -106,8 +106,10 @@ To capture the stderr stream set the type to `err`:
 <? @exec {err} pwd ?>
 ```
 
-Newlines are removed from the tag data so a command
-may span multiple lines.
+By default an error is reported if the command fails, to include the
+output when a command returns a non-zero exit code use the `@fails` tag:
+
+<?
 
 * `tag` Object parsed tag data.
 * `state` Object processing instruction state.
