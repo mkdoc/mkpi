@@ -9,9 +9,9 @@ Table of Contents
   * [API](#api)
     * [pi](#pi)
       * [Options](#options)
-    * [code](#code)
     * [exec](#exec)
     * [include](#include)
+    * [source](#source)
   * [License](#license)
 
 Processing Instructions
@@ -79,23 +79,6 @@ Returns an output stream.
 * `input` Readable=process.stdin input stream.
 * `output` Writable=process.stdout output stream.
 
-### code
-
-```javascript
-code(tag, state, cb)
-```
-
-Mark a result as appearing in a fenced code block, the tag name and
-description become the info string delimited by a single space.
-
-```html
-<? @code javascript ?>
-```
-
-* `tag` Object parsed tag data.
-* `state` Object processing instruction state.
-* `cb` Function callback function.
-
 ### exec
 
 ```javascript
@@ -138,6 +121,22 @@ Include files are resolved relative to the including file when file
 data is available (`mkcat file.md`), but when no file data is available,
 for example from stdin (`cat file.md | mkcat`), then files are resolved
 relative to the current working directory.
+
+* `tag` Object parsed tag data.
+* `state` Object processing instruction state.
+* `cb` Function callback function.
+
+### source
+
+```javascript
+source(tag, state, cb)
+```
+
+Load a file and wrap it in a fenced code block.
+
+```html
+<? @source {javascript} index.js ?>
+```
 
 * `tag` Object parsed tag data.
 * `state` Object processing instruction state.
