@@ -19,3 +19,9 @@ Execute a command and parse the stdout result into the AST stream:
 ```html
 <? @exec pwd ?>
 ```
+
+To capture the stderr stream:
+
+```html
+<? @exec {err} pwd ?>
+```

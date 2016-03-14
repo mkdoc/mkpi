@@ -5,6 +5,7 @@ Table of Contents
   * [Install](#install)
   * [Grammar](#grammar)
     * [@include](#include)
+    * [@exec](#exec)
   * [API](#api)
     * [pi](#pi)
       * [Options](#options)
@@ -43,6 +44,20 @@ Include one or more markdown documents into the AST stream:
 ```
 
 Processing instructions in included files are also executed, paths are resolved relative to the owner document when a file is available.
+
+### @exec
+
+Execute a command and parse the stdout result into the AST stream:
+
+```html
+<? @exec pwd ?>
+```
+
+To capture the stderr stream:
+
+```html
+<? @exec {err} pwd ?>
+```
 
 ## API
 
@@ -91,6 +106,12 @@ Run an external command.
 
 ```html
 <? @exec pwd ?>
+```
+
+To capture the stderr stream set the type to `err`:
+
+```html
+<? @exec {err} pwd ?>
 ```
 
 Newlines are removed from the tag data so a command
