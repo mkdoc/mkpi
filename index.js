@@ -23,7 +23,7 @@ function pi(opts, cb) {
   var serialize = new Serialize()
     , options = {
         grammar: opts.grammar,
-        serialize: opts.serialize
+        serializer: serialize
       }
     , parser = new Parser(options);
 

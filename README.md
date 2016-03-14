@@ -10,10 +10,10 @@ Table of Contents
   * [API](#api)
     * [pi](#pi)
       * [Options](#options)
-    * [exec](#exec)
-    * [grammar](#grammar)
-    * [include](#include)
-    * [source](#source)
+    * [Grammar](#grammar)
+      * [exec](#exec)
+      * [include](#include)
+      * [source](#source)
   * [License](#license)
 
 Processing Instructions
@@ -103,7 +103,11 @@ Returns an output stream.
 * `output` Writable=process.stdout output stream.
 * `grammar` Object grammar macro functions.
 
-### exec
+### Grammar
+
+Default map of tag names to grammar macro functions.
+
+#### exec
 
 ```javascript
 exec(tag, state, cb)
@@ -138,15 +142,7 @@ may span multiple lines.
 * `state` Object processing instruction state.
 * `cb` Function callback function.
 
-### grammar
-
-```javascript
-grammar
-```
-
-Default map of tag names to grammar macro functions.
-
-### include
+#### include
 
 ```javascript
 include(tag, state, cb)
@@ -168,7 +164,7 @@ relative to the current working directory.
 * `state` Object processing instruction state.
 * `cb` Function callback function.
 
-### source
+#### source
 
 ```javascript
 source(tag, state, cb)

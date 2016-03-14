@@ -58,7 +58,7 @@
         ]
       },
       {
-        "bin": "mkapi index.js lib/*.js --level=2 --title=API"
+        "bin": "./apidocs"
       },
       {
         "inc": [
