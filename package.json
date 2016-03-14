@@ -1,0 +1,57 @@
+{
+  "name": "mkpi",
+  "version": "1.0.2",
+  "description": "Output renderers for commonmark",
+  "author": "muji",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkdoc/mkpi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mkdoc/mkpi/issues"
+  },
+  "keywords": [
+    "markdown",
+    "commonmark",
+    "ast",
+    "transform"
+  ],
+  "dependencies": {
+    "commonmark": "tmpfs/commonmark.js",
+    "mkast": "~1.1.0",
+    "string-repeater": "~1.0.3",
+    "through3": "~1.1.5"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "coveralls": "~2.11.8",
+    "istanbul": "~0.4.2",
+    "mocha": "~2.4.5"
+  },
+  "scripts": {
+    "lint": "jshint . && jscs .",
+    "clean": "rm -rf coverage",
+    "readme": "mdp --force -v",
+    "test": "NODE_ENV=test mocha ${SPEC:-test/spec}",
+    "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec}",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "mdp": {
+    "title": "Processing Instructions",
+    "pedantic": true,
+    "include": "doc/readme",
+    "require": "lib",
+    "links": "links.md",
+    "toc": "Table of Contents",
+    "base": "https://github.com/mkdoc/mkpi",
+    "partial": [
+      {
+        "inc": [
+          "introduction.md",
+          "install.md"
+        ]
+      }
+    ]
+  }
+}
