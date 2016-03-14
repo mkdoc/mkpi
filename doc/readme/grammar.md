@@ -25,3 +25,11 @@ To capture the stderr stream:
 ```html
 <? @exec {err} pwd ?>
 ```
+
+### @source
+
+Load a file and wrap it in a fenced code block, the tag `type` is the info string:
+
+```html
+<? @source {javascript} index.js ?>
+```
