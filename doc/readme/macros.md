@@ -63,3 +63,26 @@ Load a file and wrap it in a fenced code block, the tag `type` is the info strin
 ```xml
 <? @source {javascript} index.js ?>
 ```
+
+### @macro
+
+Defines a macro function body; use this for application specific logic.
+
+Return a value to inject some information into the stream:
+
+```xml
+<?
+  @macro return require('./package.json').name;
+?>
+```
+
+For asynchronous operations you can callback with a value to write to the stream:
+
+```xml
+<?
+  @macro cb(null, '```\ncode\n```');
+?>
+```
+
+
+See the [macro api docs](#macro-1) for more detail.
