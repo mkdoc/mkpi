@@ -98,6 +98,9 @@ pi([opts][, cb])
 
 Execute processing instructions found in the AST.
 
+Instructions are removed from the AST by default, use `preserve` to keep
+them in the output.
+
 Returns an output stream.
 
 * `opts` Object processing options.
@@ -108,6 +111,7 @@ Returns an output stream.
 * `input` Readable=process.stdin input stream.
 * `output` Writable=process.stdout output stream.
 * `grammar` Object grammar macro functions.
+* `preserve` Boolean keep processing instructions in the AST.
 
 ### Grammar
 
@@ -122,13 +126,13 @@ exec(tag, state, cb)
 Run an external command.
 
 ```html
-<? @exec pwd ?>
+<? \@exec pwd ?>
 ```
 
 To capture the stderr stream set the type to `err`:
 
 ```html
-<? @exec {err} pwd ?>
+<? \@exec {err} pwd ?>
 ```
 
 By default an error is reported if the command fails, to include the

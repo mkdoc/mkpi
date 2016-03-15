@@ -58,7 +58,7 @@
         ]
       },
       {
-        "bin": "./apidocs"
+        "bin": "./sbin/apidocs"
       },
       {
         "inc": [

@@ -5,6 +5,9 @@ var mkast = require('mkast')
 /**
  *  Execute processing instructions found in the AST.
  *
+ *  Instructions are removed from the AST by default, use `preserve` to keep 
+ *  them in the output.
+ *
  *  @function pi
  *  @param {Object} [opts] processing options.
  *  @param {Function} [cb] callback function.
@@ -12,6 +15,7 @@ var mkast = require('mkast')
  *  @option {Readable=process.stdin} [input] input stream.
  *  @option {Writable=process.stdout} [output] output stream.
  *  @option {Object} [grammar] grammar macro functions.
+ *  @option {Boolean} [preserve] keep processing instructions in the AST.
  *
  *  @returns an output stream.
  */
@@ -23,7 +27,8 @@ function pi(opts, cb) {
   var serialize = new Serialize()
     , options = {
         grammar: opts.grammar,
-        serializer: serialize
+        serializer: serialize,
+        preserve: opts.preserve
       }
     , parser = new Parser(options);
 

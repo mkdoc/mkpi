@@ -21,7 +21,7 @@ describe('mkpi:', function() {
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
-      , opts = {input: input, output: output};
+      , opts = {input: input, output: output, preserve: true};
     
     mkpi(opts);
 

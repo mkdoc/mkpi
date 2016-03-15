@@ -3,7 +3,7 @@
 ?>
 
 <?
-  @exec mkapi index.js lib/grammar.js --level=2 --title=API
+  @exec ./sbin/apidocs
 ?>
 
 <?
