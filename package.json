@@ -35,6 +35,7 @@
     "clean": "rm -rf coverage",
     "docs": "npm run readme",
     "readme": "mdp --force -v",
+    "readme-new": "mkcat doc/readme.md | mkpi | mkout > README.md",
     "pretest": "rm -rf target && mkdir target",
     "test": "NODE_ENV=test mocha ${SPEC:-test/spec}",
     "precover": "npm run pretest",

@@ -1,5 +1,17 @@
 <?
-  @include {readme} introduction.md install.md macros.md
+  @include {readme} introduction.md install.md
+?>
+
+## Example
+
+This document was built using:
+
+<?
+  @source {markdown} readme.md
+?>
+
+<?
+  @include {readme} macros.md
 ?>
 
 <?
