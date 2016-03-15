@@ -116,11 +116,11 @@ Return a value to inject some information into the stream:
 ?>
 ```
 
-For asynchronous operations you can callback with a value to write to the stream:
+For asynchronous operations you can callback with a string to write to the stream:
 
 ```xml
 <?
-  @macro cb(null, '```\ncode\n```');
+  @macro cb(null, '*emph*');
 ?>
 ```
 
@@ -234,26 +234,33 @@ macro(tag, state, cb)
 
 Accepts a function body, compiles it and executes the function.
 
+Use this for inline application-specific logic.
+
 The function is assumed to be a standard macro function implementation
 that accepts the arguments:
 
-* `tag`: the current @macro tag.
+* `tag`: the current tag.
 * `state`: the processing state.
 * `cb`: callback function to invoke when not returning a value.
+
+It is also passed an additional non-standard argument:
+
 * `require`: alias to require files relative to the cwd.
 
-If the function returns a value other than `undefined` the callback is
-invoked immediately and control flow is returned.
+If the function returns a value other than `undefined` the result is
+parsed as markdown and written to the stream and and control flow
+is returned (as if `cb` was invoked automatically).
 
-```html
+```xml
 <? @macro return require('package.json').name; ?>
 ```
 
-The return value is converted to a string, parsed to a markdown AST and
-written to the stream.
+Otherwise the macro **must** invoke the callback function and should
+pass an optional error and result string to the callback:
 
-Otherwise the macro **must** invoke the callback function and should write
-AST object(s) to the output stream via `state.serializer.write`.
+```xml
+<? @macro cb(null, '*emph*'); ?>
+```
 
 * `tag` Object parsed tag data.
 * `state` Object processing instruction state.

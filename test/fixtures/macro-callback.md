@@ -1,3 +1,3 @@
 <?
-  @macro cb(null, '```\ncode\n```');
+  @macro cb(null, '*emph*');
 ?>

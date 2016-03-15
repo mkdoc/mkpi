@@ -76,11 +76,11 @@ Return a value to inject some information into the stream:
 ?>
 ```
 
-For asynchronous operations you can callback with a value to write to the stream:
+For asynchronous operations you can callback with a string to write to the stream:
 
 ```xml
 <?
-  @macro cb(null, '```\ncode\n```');
+  @macro cb(null, '*emph*');
 ?>
 ```
 
