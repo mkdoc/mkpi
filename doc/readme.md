@@ -4,7 +4,7 @@
 
 ## Example
 
-This [readme document](/README.md) was built the source file ([doc/readme.md](/doc/readme)):
+This [readme document](/README.md) was built from the source file ([doc/readme.md](/doc/readme)):
 
 <?
   @source {markdown} readme.md
