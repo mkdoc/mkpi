@@ -12,7 +12,7 @@ Include one or more markdown documents into the AST stream:
 
 Processing instructions in included files are also executed, paths are resolved relative to the owner document when a file is available.
 
-You can specify a path to include from using the tag `type`:
+You can specify a path to include from using the tag type:
 
 ```xml
 <? @include {path/to/folder} intro.md install.md license.md ?>
@@ -36,9 +36,7 @@ An error is reported when a command fails, to include the output of a command wi
 
 
 ```xml
-<?
-  @fails stderr pwd 
-?>
+<? @fails stderr pwd ?>
 ```
 
 Commands may contain newlines they are removed before execution:
@@ -50,6 +48,12 @@ Commands may contain newlines they are removed before execution:
           dist
           test
 ?>
+```
+
+To wrap the output in a fenced code block use a type:
+
+```xml
+<? @exec {javascript} cat index.js ?>
 ```
 
 ### @source
