@@ -45,7 +45,7 @@ The default processing instruction grammar includes functions for including mark
 
 Include one or more markdown documents into the AST stream:
 
-```html
+```xml
 <? @include intro.md install.md license.md ?>
 ```
 
@@ -53,7 +53,7 @@ Processing instructions in included files are also executed, paths are resolved 
 
 You can specify a path to include from using the tag `type`:
 
-```html
+```xml
 <? @include {path/to/folder} intro.md install.md license.md ?>
 ```
 
@@ -61,22 +61,32 @@ You can specify a path to include from using the tag `type`:
 
 Execute a command and parse the result into the AST stream:
 
-```html
+```xml
 <? @exec pwd ?>
 ```
 
-To capture the stderr stream:
+To capture the stderr stream use the `stderr` keyword before the command:
 
-```html
-<? @exec {err} pwd ?>
+```xml
+<? @exec stderr pwd ?>
 ```
 
 An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@fails` tag:
 
-```html
+```xml
 <?
-  @fails
-  @exec {err} pwd 
+  @fails stderr pwd 
+?>
+```
+
+Commands may contain newlines they are removed before execution:
+
+```xml
+<?
+  @exec ls -la
+          lib
+          dist
+          test
 ?>
 ```
 
@@ -84,7 +94,7 @@ An error is reported when a command fails, to include the output of a command wi
 
 Load a file and wrap it in a fenced code block, the tag `type` is the info string:
 
-```html
+```xml
 <? @source {javascript} index.js ?>
 ```
 
@@ -125,28 +135,36 @@ exec(tag, state, cb)
 
 Run an external command.
 
-```html
-<? \@exec pwd ?>
+Newlines are removed from the command so it may span multiple lines.
+
+```xml
+<? @exec pwd ?>
 ```
 
-To capture the stderr stream set the type to `err`:
+To capture the stderr stream set `stderr` before the command:
 
-```html
-<? \@exec {err} pwd ?>
+```xml
+<? @exec stderr pwd ?>
 ```
 
 By default an error is reported if the command fails, to include the
 output when a command returns a non-zero exit code use the `@fails` tag:
 
-```html
-<?
-\@fails
-\@exec pwd
-?>
+```xml
+<? @fails pwd ?>
 ```
 
-Newlines are removed from the tag data so a command
-may span multiple lines.
+To wrap a result in a fenced code block specify a `type`:
+
+```xml
+<? @exec {javascript} cat index.js ?>
+```
+
+If you want the result in a fenced code block with no info string use:
+
+```xml
+<? @exec {} cat index.js ?>
+```
 
 * `tag` Object parsed tag data.
 * `state` Object processing instruction state.

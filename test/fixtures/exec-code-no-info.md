@@ -1,0 +1,3 @@
+<?
+  @exec {} cat index.js
+?>

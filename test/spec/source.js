@@ -34,9 +34,7 @@ describe('mkpi:', function() {
       expect(result).to.be.an('array');
       expect(result[1]._literal).to.eql(instructions[0]);
 
-      // skip the open document
-
-      expect(result[3]._literal)
+      expect(result[2]._literal)
         .to.eql('module.exports = function source(){};\n');
 
       done(err);

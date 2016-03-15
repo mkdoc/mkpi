@@ -1,4 +1,3 @@
 <?
-  @fails
-  @exec stderr test/bin/exec-fails
+  @fails stderr test/bin/exec-fails
 ?>
