@@ -18,7 +18,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 
 ## Example
 
-This document was built using:
+This [readme document](/README.md) was built the source file ([doc/readme.md](/doc/readme)):
 
 ```markdown
 <?
@@ -27,7 +27,7 @@ This document was built using:
 
 ## Example
 
-This document was built using:
+This [readme document](/README.md) was built the source file ([doc/readme.md](/doc/readme)):
 
 <?
   @source {markdown} readme.md
@@ -42,7 +42,7 @@ This document was built using:
 ?>
 
 <?
-  @include {readme} license.md
+  @include {readme} license.md links.md
 ?>
 ```
 

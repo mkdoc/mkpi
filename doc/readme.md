@@ -4,7 +4,7 @@
 
 ## Example
 
-This document was built using:
+This [readme document](/README.md) was built the source file ([doc/readme.md](/doc/readme)):
 
 <?
   @source {markdown} readme.md
@@ -19,5 +19,5 @@ This document was built using:
 ?>
 
 <?
-  @include {readme} license.md
+  @include {readme} license.md links.md
 ?>
