@@ -1,4 +1,4 @@
 <?
   @fails
-  @exec {err} test/bin/exec-fails
+  @exec stderr test/bin/exec-fails
 ?>

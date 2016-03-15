@@ -29,7 +29,7 @@ Execute a command and parse the result into the AST stream:
 To capture the stderr stream:
 
 ```html
-<? @exec {err} pwd ?>
+<? @exec stderr pwd ?>
 ```
 
 An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@fails` tag:

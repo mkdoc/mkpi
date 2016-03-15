@@ -1,3 +1,3 @@
 <?
-  @exec {err} test/bin/exec-stderr
+  @exec stderr test/bin/exec-stderr
 ?>

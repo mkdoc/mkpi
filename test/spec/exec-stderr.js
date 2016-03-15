@@ -12,7 +12,7 @@ describe('mkpi:', function() {
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [
-          '<?\n  @exec {err} test/bin/exec-stderr\n?>'
+          '<?\n  @exec stderr test/bin/exec-stderr\n?>'
         ]
 
     // mock file for correct relative path
