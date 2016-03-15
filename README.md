@@ -13,6 +13,7 @@ Table of Contents
     * [Grammar](#grammar)
       * [exec](#exec)
       * [include](#include)
+      * [macro](#macro)
       * [source](#source)
   * [License](#license)
 
@@ -197,6 +198,39 @@ Include files are resolved relative to the including file when file
 data is available (`mkcat file.md`), but when no file data is available,
 for example from stdin (`cat file.md | mkcat`), then files are resolved
 relative to the current working directory.
+
+* `tag` Object parsed tag data.
+* `state` Object processing instruction state.
+* `cb` Function callback function.
+
+#### macro
+
+```javascript
+macro(tag, state, cb)
+```
+
+Accepts a function body, compiles it and executes the function.
+
+The function is assumed to be a standard macro function implementation
+that accepts the arguments:
+
+* `tag`: the current @macro tag.
+* `state`: the processing state.
+* `cb`: callback function to invoke when not returning a value.
+* `require`: alias to require files relative to the cwd.
+
+If the function returns a value other than `undefined` the callback is
+invoked immediately and control flow is returned.
+
+```html
+<? @macro return require('package.json').name; ?>
+```
+
+The return value is converted to a string, parsed to a markdown AST and
+written to the stream.
+
+Otherwise the macro **must** invoke the callback function and should write
+AST object(s) to the output stream via `state.serializer.write`.
 
 * `tag` Object parsed tag data.
 * `state` Object processing instruction state.
