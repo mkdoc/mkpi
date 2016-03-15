@@ -84,5 +84,4 @@ For asynchronous operations you can callback with a value to write to the stream
 ?>
 ```
 
-
 See the [macro api docs](#macro-1) for more detail.
