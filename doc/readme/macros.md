@@ -22,6 +22,8 @@ You can specify a path to include from using the tag value:
 <? @include {=path/to/folder} intro.md install.md license.md ?>
 ```
 
+Use this as shorthand when all the files to include are in the same directory.
+
 #### @exec
 
 Execute a command and parse the result into the AST stream:
