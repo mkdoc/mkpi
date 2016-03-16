@@ -4,7 +4,7 @@
 
 ## Usage
 
-<? @source {javascript=s/\.\.index/mkpi/} usage.js ?>
+<? @source {javascript=s/\.\.\/index/mkpi/gm} usage.js ?>
 
 ## Example
 
