@@ -10,7 +10,9 @@ This [readme document](/README.md) was built from the source file ([doc/readme.m
 
 Using the command:
 
-<? @macro return '```\n' + require('./package.json').scripts.readme + '\n```' ?>
+```shell !pi
+<? @macro return require('./package.json').scripts.readme ?>
+```
 
 <? @include {readme} macros.md ?>
 <? @exec ./sbin/apidocs ?>
