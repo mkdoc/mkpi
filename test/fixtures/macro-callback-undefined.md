@@ -1,0 +1,1 @@
+<? @macro cb(null, undefined); ?>

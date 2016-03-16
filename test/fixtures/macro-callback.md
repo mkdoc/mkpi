@@ -1,3 +1,1 @@
-<?
-  @macro cb(null, '*emph*');
-?>
+<? @macro cb(null, '*emphasis*'); ?>

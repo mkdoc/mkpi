@@ -38,6 +38,8 @@ function pi(opts, cb) {
     .pipe(opts.output);
 
   if(cb) {
+
+    parser.once('error', cb)
     opts.output
       .once('error', cb)
       .once('finish', cb);
