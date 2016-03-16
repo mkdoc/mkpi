@@ -6,13 +6,13 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
-  it('should process @source pi (w/ info string)', function(done) {
-    var source = 'test/fixtures/source.md'
-      , target = 'target/source.json.log'
+  it('should process @source pi (without info string)', function(done) {
+    var source = 'test/fixtures/source-markdown.md'
+      , target = 'target/source-markdown.json.log'
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [
-          '<?\n  @source {javascript} source.js\n?>'
+          '<? @source source.md ?>'
         ]
 
     // mock file for correct relative path
@@ -34,8 +34,10 @@ describe('mkpi:', function() {
       expect(result).to.be.an('array');
       expect(result[1]._literal).to.eql(instructions[0]);
 
-      expect(result[2]._literal)
-        .to.eql('module.exports = function source(){};\n');
+      // skip open document
+
+      expect(result[3]._literal)
+        .to.eql('<?\n  @source {javascript} source.js\n?>');
 
       done(err);
     })

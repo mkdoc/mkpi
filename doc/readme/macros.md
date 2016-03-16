@@ -62,7 +62,15 @@ To wrap the output in a fenced code block use a type:
 
 #### @source
 
-Load a file and wrap it in a fenced code block, the tag `type` is the info string:
+Load a file and parse it as markdown or wrap it in a fenced code block, unlike the @include macro processing instructions **are not executed**.
+
+Parse a markdown file into the AST stream but do not execute processing instructions:
+
+```xml
+<? @source file.md ?>
+```
+
+Load a file into a fenced code block:
 
 ```xml
 <? @source {javascript} index.js ?>
