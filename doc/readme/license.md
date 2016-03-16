@@ -1,3 +1,4 @@
 ## License
 
-MIT
+<? @macro return require('./package.json').license; ?>
+
