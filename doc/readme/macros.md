@@ -2,7 +2,29 @@
 
 The default processing instruction grammar includes functions for including markdown documents, executing commands and more.
 
-### @include
+### Custom Macros
+
+To extend the existing grammar with a custom macro function use:
+
+```javascript
+var mkpi = require('mkpi')
+  , grammar = require('mkpi/lib/grammar')
+  , id = 'custom-macro';
+
+grammar[id] = function(cb) {
+  // implement macro logic
+  cb();
+}
+mkpi({grammar: grammar});
+```
+
+You macro function will then be executed when the `<? @custom-macro ?>` processing instruction is encountered.
+
+### Grammar
+
+These macros are defined in the default grammar.
+
+#### @include
 
 Include one or more markdown documents into the AST stream:
 
@@ -18,7 +40,7 @@ You can specify a path to include from using the tag type:
 <? @include {path/to/folder} intro.md install.md license.md ?>
 ```
 
-### @exec
+#### @exec
 
 Execute a command and parse the result into the AST stream:
 
@@ -56,7 +78,7 @@ To wrap the output in a fenced code block use a type:
 <? @exec {javascript} cat index.js ?>
 ```
 
-### @source
+#### @source
 
 Load a file and wrap it in a fenced code block, the tag `type` is the info string:
 
@@ -64,7 +86,7 @@ Load a file and wrap it in a fenced code block, the tag `type` is the info strin
 <? @source {javascript} index.js ?>
 ```
 
-### @macro
+#### @macro
 
 Defines a macro function body; use this for application specific logic.
 
