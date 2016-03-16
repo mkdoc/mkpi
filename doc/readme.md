@@ -11,7 +11,6 @@
 <? @source {javascript=s/\.\.\/index/mkpi/gm} usage.js ?>
 
 <? @include readme/example.md ?>
-
 <? @source {markdown} readme.md ?>
 
 Using the command:
