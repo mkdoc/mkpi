@@ -32,11 +32,11 @@ To capture the stderr stream use the `stderr` keyword before the command:
 <? @exec stderr pwd ?>
 ```
 
-An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@fails` tag:
+An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@exec!` tag:
 
 
 ```xml
-<? @fails stderr pwd ?>
+<? @exec! stderr pwd ?>
 ```
 
 Commands may contain newlines they are removed before execution:

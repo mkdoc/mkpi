@@ -82,10 +82,10 @@ To capture the stderr stream use the `stderr` keyword before the command:
 <? @exec stderr pwd ?>
 ```
 
-An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@fails` tag:
+An error is reported when a command fails, to include the output of a command with a non-zero exit code use the `@exec!` tag:
 
 ```xml
-<? @fails stderr pwd ?>
+<? @exec! stderr pwd ?>
 ```
 
 Commands may contain newlines they are removed before execution:
@@ -185,10 +185,10 @@ To capture the stderr stream set `stderr` before the command:
 ```
 
 By default an error is reported if the command fails, to include the
-output when a command returns a non-zero exit code use the `@fails` tag:
+output when a command returns a non-zero exit code use the `@exec!` tag:
 
 ```xml
-<? @fails pwd ?>
+<? @exec! pwd ?>
 ```
 
 To wrap a result in a fenced code block specify a `type`:

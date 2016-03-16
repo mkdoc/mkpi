@@ -20,8 +20,12 @@ var mkast = require('mkast')
  *  @returns an output stream.
  */
 function pi(opts, cb) {
+
+  /* istanbul ignore next: always pass options in test specs */
   opts = opts || {};
+  /* istanbul ignore next: never use process streams in test specs */
   opts.input = opts.input || process.stdin;
+  /* istanbul ignore next: never use process streams in test specs */
   opts.output = opts.output || process.stdout;
 
   var serialize = new Serialize()

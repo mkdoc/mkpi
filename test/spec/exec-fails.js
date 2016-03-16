@@ -12,7 +12,7 @@ describe('mkpi:', function() {
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [
-          '<?\n  @fails stderr test/bin/exec-fails\n?>'
+          '<?\n  @exec! stderr test/bin/exec-fails\n?>'
         ]
 
     // mock file for correct relative path
@@ -30,6 +30,8 @@ describe('mkpi:', function() {
       result = result.map(function(line) {
         return JSON.parse(line); 
       })
+
+      //console.dir(result);
 
       expect(result).to.be.an('array');
       expect(result[1]._literal).to.eql(instructions[0]);
