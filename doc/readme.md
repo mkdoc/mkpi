@@ -1,6 +1,6 @@
 # Processing Instructions
 
-<? @include {readme} introduction.md install.md ?>
+<? @include {=readme} introduction.md install.md ?>
 
 ## Example
 
@@ -12,6 +12,6 @@ Using the command:
 
 <? @macro {shell} return require('./package.json').scripts.readme ?>
 
-<? @include {readme} macros.md ?>
+<? @include {=readme} macros.md ?>
 <? @exec ./sbin/apidocs ?>
-<? @include {readme} license.md links.md ?>
+<? @include {=readme} license.md links.md ?>
