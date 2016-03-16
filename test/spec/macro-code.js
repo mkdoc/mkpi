@@ -6,13 +6,13 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
-  it('should process @macro pi (return)', function(done) {
-    var source = 'test/fixtures/macro-return.md'
-      , target = 'target/macro-return.json.log'
+  it('should process @macro pi (code)', function(done) {
+    var source = 'test/fixtures/macro-code.md'
+      , target = 'target/macro-code.json.log'
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [
-          "<? @macro return require('./package.json').name; ?>"
+          "<? @macro {shell} return require('./package.json').scripts.readme ?>"
         ]
 
     // mock file for correct relative path
@@ -34,8 +34,8 @@ describe('mkpi:', function() {
       expect(result).to.be.an('array');
       expect(result[1]._literal).to.eql(instructions[0]);
 
-      expect(result[2]._firstChild._literal).to.eql(
-        require('../../package.json').name);
+      expect(result[2]._literal).to.eql(
+        require('../../package.json').scripts.readme + '\n');
 
       done(err);
     })
