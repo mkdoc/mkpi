@@ -143,7 +143,7 @@ mkpi({grammar: grammar});
 
 ### Macro Functions
 
-A macro function accepts a single argument `cb` which must be invoked when processing is complete, an `Error` may be passed to the callback. With the exception that `@macro` function body definitions that return a value other than `undefined` should not call the callback.
+A macro function accepts a single argument `cb` which must be invoked when processing is complete, an `Error` may be passed to the callback. 
 
 They access all pertinent information via `this`, for example:
 
@@ -154,5 +154,7 @@ function(cb) {
   cb();
 }
 ```
+
+Note the exception that `@macro` function body definitions that return a value other than `undefined` should not call the callback.
 
 See the [grammar api docs](#grammar-1) for more information.
