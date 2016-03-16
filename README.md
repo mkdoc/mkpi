@@ -18,6 +18,14 @@ npm i mkpi --save
 
 For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 
+## Usage
+
+```javascript
+var mkpi = require('../index');
+// read from process.stdin, write to process.stdout
+mkpi();
+```
+
 ## Example
 
 This [readme document](/README.md) was built from the source file ([doc/readme.md](/doc/readme)) shown below:
@@ -26,6 +34,10 @@ This [readme document](/README.md) was built from the source file ([doc/readme.m
 # Processing Instructions
 
 <? @include {=readme} introduction.md install.md ?>
+
+## Usage
+
+<? @source {javascript=s/\.\.index/mkpi/} usage.js ?>
 
 ## Example
 
