@@ -364,10 +364,10 @@ pass an optional error and result string to the callback:
 
 * `cb` Function callback function.
 
-#### 
+#### replace
 
 ```javascript
-(str)
+replace(str)
 ```
 
 Parse a substitution definition in the form `s/{regexp}/{string}/gimy`.
