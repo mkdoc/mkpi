@@ -86,6 +86,8 @@ You can specify a path to include from using the tag value:
 
 Use this as shorthand when all the files to include are in the same directory.
 
+Note that file paths passed to this macro cannot include whitespace.
+
 #### @exec
 
 Execute a command and parse the result into the AST stream:
