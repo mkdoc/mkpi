@@ -21,29 +21,16 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 This [readme document](/README.md) was built from the source file ([doc/readme.md](/doc/readme)) shown below:
 
 ```markdown
-<?
-  @include {readme} introduction.md install.md
-?>
+<? @include {readme} introduction.md install.md ?>
 
 ## Example
 
 This [readme document](/README.md) was built from the source file ([doc/readme.md](/doc/readme)) shown below:
 
-<?
-  @source {markdown} readme.md
-?>
-
-<?
-  @include {readme} macros.md
-?>
-
-<?
-  @exec ./sbin/apidocs
-?>
-
-<?
-  @include {readme} license.md links.md
-?>
+<? @source {markdown} readme.md ?>
+<? @include {readme} macros.md ?>
+<? @exec ./sbin/apidocs ?>
+<? @include {readme} license.md links.md ?>
 ```
 
 ## Macros
