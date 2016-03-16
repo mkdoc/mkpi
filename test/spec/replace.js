@@ -13,4 +13,11 @@ describe('mkpi:', function() {
     done();
   });
 
+  it('should return null when replace pattern does not match', function(done) {
+    var source = '//'
+      , res = replace(source);
+    expect(res).to.eql(null);
+    done();
+  });
+
 });
