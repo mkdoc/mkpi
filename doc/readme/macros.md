@@ -88,6 +88,15 @@ Return a value to inject some information into the stream:
 ?>
 ```
 
+Or wrap the result in a fenced code block:
+
+```xml
+<?
+  @macro {shell} return require('./package.json').scripts.test;
+?>
+```
+
+
 For asynchronous operations you can callback with a string to write to the stream:
 
 ```xml
