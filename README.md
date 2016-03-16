@@ -22,8 +22,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 
 ```javascript
 var mkpi = require('mkpi');
-// read from process.stdin, write to process.stdout
-mkpi();
+mkpi(); // read from process.stdin, write to process.stdout
 ```
 
 ## Example
