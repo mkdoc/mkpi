@@ -78,6 +78,16 @@ Load a file into a fenced code block:
 <? @source {javascript} index.js ?>
 ```
 
+Sometimes it is useful to perform a string replacement on the sourced file, this is particularly helpful when you want to include a usage example that can be run directly but show the final package name.
+
+To do so specify a string substitution in the form `s/{regexp}/{replace}/gimy` as a value, for example:
+
+```xml
+<? @source {javascript=s/\.\.\/index/mkpi/gm} usage.js ?>
+```
+
+Will replace all occurences of `../index` with `mkpi` in `usage.js` before the file is parsed into the stream.
+
 #### @macro
 
 Defines a macro function body; use this for application specific logic.
