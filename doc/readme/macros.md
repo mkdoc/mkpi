@@ -2,40 +2,6 @@
 
 The default processing instruction grammar includes functions for including markdown documents, executing commands and more.
 
-### Custom Macros
-
-Create a vanilla object if you wish to discard the default grammar macros:
-
-```javascript
-var mkpi = require('mkpi')
-  , grammar = {}
-  , id = 'custom-macro';
-
-grammar[id] = function(cb) {
-  // implement macro logic
-  cb();
-}
-
-mkpi({grammar: grammar});
-```
-
-You macro function will then be executed when the `<? @custom-macro ?>` processing instruction is encountered.
-
-To extend the existing grammar with a custom macro function use:
-
-```javascript
-var mkpi = require('mkpi')
-  , grammar = require('mkpi/lib/grammar')
-  , id = 'custom-macro';
-
-grammar[id] = function(cb) {
-  // implement macro logic
-  cb();
-}
-
-mkpi({grammar: grammar});
-```
-
 ### Grammar
 
 These macros are defined by the default grammar.
@@ -123,3 +89,38 @@ For asynchronous operations you can callback with a string to write to the strea
 ```
 
 See the [macro api docs](#macro-1) for more detail.
+
+### Custom Macros
+
+Create a vanilla object if you wish to discard the default grammar macros:
+
+```javascript
+var mkpi = require('mkpi')
+  , grammar = {}
+  , id = 'custom-macro';
+
+grammar[id] = function(cb) {
+  // implement macro logic
+  cb();
+}
+
+mkpi({grammar: grammar});
+```
+
+You macro function will then be executed when the `<? @custom-macro ?>` processing instruction is encountered.
+
+To extend the existing grammar with a custom macro function use:
+
+```javascript
+var mkpi = require('mkpi')
+  , grammar = require('mkpi/lib/grammar')
+  , id = 'custom-macro';
+
+grammar[id] = function(cb) {
+  // implement macro logic
+  cb();
+}
+
+mkpi({grammar: grammar});
+```
+

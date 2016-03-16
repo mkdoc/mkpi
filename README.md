@@ -52,40 +52,6 @@ mkcat doc/readme.md | mkpi | mkout > README.md
 
 The default processing instruction grammar includes functions for including markdown documents, executing commands and more.
 
-### Custom Macros
-
-Create a vanilla object if you wish to discard the default grammar macros:
-
-```javascript
-var mkpi = require('mkpi')
-  , grammar = {}
-  , id = 'custom-macro';
-
-grammar[id] = function(cb) {
-  // implement macro logic
-  cb();
-}
-
-mkpi({grammar: grammar});
-```
-
-You macro function will then be executed when the `<? @custom-macro ?>` processing instruction is encountered.
-
-To extend the existing grammar with a custom macro function use:
-
-```javascript
-var mkpi = require('mkpi')
-  , grammar = require('mkpi/lib/grammar')
-  , id = 'custom-macro';
-
-grammar[id] = function(cb) {
-  // implement macro logic
-  cb();
-}
-
-mkpi({grammar: grammar});
-```
-
 ### Grammar
 
 These macros are defined by the default grammar.
@@ -173,6 +139,40 @@ For asynchronous operations you can callback with a string to write to the strea
 
 See the [macro api docs](#macro-1) for more detail.
 
+### Custom Macros
+
+Create a vanilla object if you wish to discard the default grammar macros:
+
+```javascript
+var mkpi = require('mkpi')
+  , grammar = {}
+  , id = 'custom-macro';
+
+grammar[id] = function(cb) {
+  // implement macro logic
+  cb();
+}
+
+mkpi({grammar: grammar});
+```
+
+You macro function will then be executed when the `<? @custom-macro ?>` processing instruction is encountered.
+
+To extend the existing grammar with a custom macro function use:
+
+```javascript
+var mkpi = require('mkpi')
+  , grammar = require('mkpi/lib/grammar')
+  , id = 'custom-macro';
+
+grammar[id] = function(cb) {
+  // implement macro logic
+  cb();
+}
+
+mkpi({grammar: grammar});
+```
+
 ## API
 
 ### pi
@@ -205,7 +205,7 @@ Default map of tag names to grammar macro functions.
 #### exec
 
 ```javascript
-exec(tag, state, cb)
+exec(cb)
 ```
 
 Run an external command.
@@ -241,14 +241,12 @@ If you want the result in a fenced code block with no info string use:
 <? @exec {} cat index.js ?>
 ```
 
-* `tag` Object parsed tag data.
-* `state` Object processing instruction state.
 * `cb` Function callback function.
 
 #### include
 
 ```javascript
-include(tag, state, cb)
+include(cb)
 ```
 
 Include one or more markdown files into the AST, processing instructions
@@ -269,14 +267,12 @@ data is available (`mkcat file.md`), but when no file data is available,
 for example from stdin (`cat file.md | mkcat`), then files are resolved
 relative to the current working directory.
 
-* `tag` Object parsed tag data.
-* `state` Object processing instruction state.
 * `cb` Function callback function.
 
 #### macro
 
 ```javascript
-macro(tag, state, cb)
+macro(cb)
 ```
 
 Accepts a function body, compiles it and executes the function.
@@ -286,8 +282,6 @@ Use this for inline application-specific logic.
 The function is assumed to be a standard macro function implementation
 that accepts the arguments:
 
-- `tag`: the current tag.
-- `state`: the processing state.
 - `cb`: callback function to invoke when not returning a value.
 
 It is also passed an additional non-standard argument:
@@ -309,14 +303,12 @@ pass an optional error and result string to the callback:
 <? @macro cb(null, '*emph*'); ?>
 ```
 
-* `tag` Object parsed tag data.
-* `state` Object processing instruction state.
 * `cb` Function callback function.
 
 #### source
 
 ```javascript
-source(tag, state, cb)
+source(cb)
 ```
 
 Load a file and wrap it in a fenced code block.
@@ -325,8 +317,6 @@ Load a file and wrap it in a fenced code block.
 <? @source {javascript} index.js ?>
 ```
 
-* `tag` Object parsed tag data.
-* `state` Object processing instruction state.
 * `cb` Function callback function.
 
 ## License
