@@ -8,7 +8,7 @@ describe('mkpi:', function() {
 
   it('should process @exec pi (stdout)', function(done) {
     var source = 'test/fixtures/exec-stdout.md'
-      , target = 'target/exec.json.log'
+      , target = 'target/exec-stdout.json.log'
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [

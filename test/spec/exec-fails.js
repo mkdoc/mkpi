@@ -8,7 +8,7 @@ describe('mkpi:', function() {
 
   it('should process @exec pi (fails)', function(done) {
     var source = 'test/fixtures/exec-fails.md'
-      , target = 'target/exec.json.log'
+      , target = 'target/exec-fails.json.log'
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [

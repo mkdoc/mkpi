@@ -1,3 +1,1 @@
-<?
-  @macro return require('./package.json').name;
-?>
+<? @macro return require('./package.json').name; ?>
