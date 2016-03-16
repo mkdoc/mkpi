@@ -57,7 +57,7 @@ Using the command:
 Using the command:
 
 ```shell
-mkcat doc/readme.md | mkpi | mkout > README.md
+mkcat doc/readme.md | mkpi | mkgen | mkout > README.md
 ```
 
 ## Macros
