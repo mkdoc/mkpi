@@ -34,38 +34,11 @@
     "lint": "jshint . && jscs .",
     "clean": "rm -rf coverage",
     "docs": "npm run readme",
-    "readme": "mdp --force -v",
-    "readme-new": "mkcat doc/readme.md | mkpi | mkout > README.md",
+    "readme": "mkcat doc/readme.md | mkpi | mkout > README.md",
     "pretest": "rm -rf target && mkdir target",
     "test": "NODE_ENV=test mocha ${SPEC:-test/spec}",
     "precover": "npm run pretest",
     "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec}",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  },
-  "mdp": {
-    "title": "Processing Instructions",
-    "pedantic": true,
-    "include": "doc/readme",
-    "require": "lib",
-    "links": "links.md",
-    "toc": "Table of Contents",
-    "base": "https://github.com/mkdoc/mkpi",
-    "partial": [
-      {
-        "inc": [
-          "introduction.md",
-          "install.md",
-          "macros.md"
-        ]
-      },
-      {
-        "bin": "./sbin/apidocs"
-      },
-      {
-        "inc": [
-          "license.md"
-        ]
-      }
-    ]
   }
 }

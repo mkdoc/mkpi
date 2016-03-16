@@ -1,0 +1,26 @@
+{
+  "title": "Processing Instructions",
+  "pedantic": true,
+  "include": "doc/readme",
+  "require": "lib",
+  "links": "links.md",
+  "toc": "Table of Contents",
+  "base": "https://github.com/mkdoc/mkpi",
+  "partial": [
+    {
+      "inc": [
+        "introduction.md",
+        "install.md",
+        "macros.md"
+      ]
+    },
+    {
+      "bin": "./sbin/apidocs"
+    },
+    {
+      "inc": [
+        "license.md"
+      ]
+    }
+  ]
+}
