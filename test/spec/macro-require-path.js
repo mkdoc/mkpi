@@ -6,39 +6,41 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
-  it('should process @macro pi (return w/ module require path)', function(done) {
-    var source = 'test/fixtures/macro-require-path.md'
-      , target = 'target/macro-require-path.json.log'
-      , parser = new Parser()
-      , data = parser.parse('' + fs.readFileSync(source))
-      , instructions = [
-          "<? @macro return require('mkast/package.json').name; ?>"
-        ]
+  it('should process @macro pi (return w/ module require path)',
+    function(done) {
+      var source = 'test/fixtures/macro-require-path.md'
+        , target = 'target/macro-require-path.json.log'
+        , parser = new Parser()
+        , data = parser.parse('' + fs.readFileSync(source))
+        , instructions = [
+            "<? @macro return require('mkast/package.json').name; ?>"
+          ]
 
-    // mock file for correct relative path
-    // mkcat normally injects this info
-    data._file = source;
+      // mock file for correct relative path
+      // mkcat normally injects this info
+      data._file = source;
 
-    var input = mkast.serialize(data)
-      , output = fs.createWriteStream(target)
-      , opts = {input: input, output: output, preserve: true};
-    
-    mkpi(opts);
+      var input = mkast.serialize(data)
+        , output = fs.createWriteStream(target)
+        , opts = {input: input, output: output, preserve: true};
+      
+      mkpi(opts);
 
-    output.once('finish', function(err) {
-      var result = ('' + fs.readFileSync(target)).trim().split('\n');
-      result = result.map(function(line) {
-        return JSON.parse(line); 
+      output.once('finish', function(err) {
+        var result = ('' + fs.readFileSync(target)).trim().split('\n');
+        result = result.map(function(line) {
+          return JSON.parse(line); 
+        })
+
+        expect(result).to.be.an('array');
+        expect(result[1]._literal).to.eql(instructions[0]);
+
+        expect(result[2]._firstChild._literal).to.eql(
+          require('mkast/package.json').name);
+
+        done(err);
       })
-
-      expect(result).to.be.an('array');
-      expect(result[1]._literal).to.eql(instructions[0]);
-
-      expect(result[2]._firstChild._literal).to.eql(
-        require('mkast/package.json').name);
-
-      done(err);
-    })
-  });
+    }
+  );
 
 });
