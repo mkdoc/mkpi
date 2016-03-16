@@ -224,9 +224,8 @@ Default map of tag names to grammar macro functions.
 exec(cb)
 ```
 
-Run an external command.
-
-Newlines are removed from the command so it may span multiple lines.
+Run an external command, newlines are removed from the command so it
+may span multiple lines.
 
 ```xml
 <? @exec pwd ?>
