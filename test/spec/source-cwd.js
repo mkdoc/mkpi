@@ -6,18 +6,16 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
-  it('should process @source pi (w/ info string)', function(done) {
-    var source = 'test/fixtures/source.md'
-      , target = 'target/source.json.log'
+  it('should process @source pi (relative to cwd)', function(done) {
+    var source = 'test/fixtures/source-cwd.md'
+      , target = 'target/source-cwd.json.log'
       , parser = new Parser()
       , data = parser.parse('' + fs.readFileSync(source))
       , instructions = [
-          '<?\n  @source {javascript} source.js\n?>'
+          '<? @source {} .gitignore ?>'
         ]
 
-    // mock file for correct relative path
-    // mkcat normally injects this info
-    data._file = source;
+    // NOTE: do not inject _file to change path resolution
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
@@ -34,9 +32,9 @@ describe('mkpi:', function() {
       expect(result).to.be.an('array');
       expect(result[1]._literal).to.eql(instructions[0]);
 
-      expect(result[2]._info).to.eql('javascript');
+      expect(result[2]._info).to.eql(undefined);
       expect(result[2]._literal)
-        .to.eql('module.exports = function source(){};\n');
+        .to.eql('' + fs.readFileSync('.gitignore'));
 
       done(err);
     })
