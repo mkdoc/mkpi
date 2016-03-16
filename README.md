@@ -352,6 +352,30 @@ pass an optional error and result string to the callback:
 
 * `cb` Function callback function.
 
+#### 
+
+```javascript
+(str)
+```
+
+Parse a substitution definition in the form `s/{regexp}/{string}/gimy`.
+
+When the `str` can be parsed the returned object includes:
+
+- `regexp`: RegExp compiled pattern.
+- `replace`: String replacement string.
+- `flags`: String regexp flags.
+
+If it cannot be parsed null is returned.
+
+Returns replacement object or null.
+
+* `str` String substitution definition.
+
+##### Throws
+
+* `SyntaxError` if the regexp pattern is malformed.
+
 #### source
 
 ```javascript
