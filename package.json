@@ -1,7 +1,7 @@
 {
   "name": "mkpi",
   "version": "1.0.2",
-  "description": "Processing instruction tool",
+  "description": "Processing instruction macros",
   "author": "muji",
   "license": "MIT",
   "repository": {

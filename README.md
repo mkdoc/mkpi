@@ -246,6 +246,9 @@ Execute processing instructions found in the AST.
 Instructions are removed from the AST by default, use `preserve` to keep
 them in the output.
 
+When no `input` and no `output` are specified the parser stream
+is returned and `cb` is ignored.
+
 Returns an output stream.
 
 * `opts` Object processing options.
@@ -253,8 +256,8 @@ Returns an output stream.
 
 #### Options
 
-* `input` Readable=process.stdin input stream.
-* `output` Writable=process.stdout output stream.
+* `input` Readable input stream.
+* `output` Writable output stream.
 * `grammar` Object grammar macro functions.
 * `preserve` Boolean keep processing instructions in the AST.
 
