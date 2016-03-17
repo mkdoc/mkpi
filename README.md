@@ -262,6 +262,18 @@ Returns an output stream.
 
 Default map of tag names to grammar macro functions.
 
+A macro function has the signature `function(cb)`, it should always invoke
+the callback and may pass an error.
+
+It can access the following fields via `this`:
+
+- `writer`: output stream, write AST nodes to this stream.
+- `comment`: parsed processing instruction comment.
+- `tag`: the tag that fired the macro function.
+- `parser`: markdown parser (`parser.parse()` to convert strings to nodes).
+- `grammar`: grammar document, map of tag identifiers to macro functions.
+- `preserve`: whether to preserve the processing instructions.
+
 #### exec
 
 ```javascript
@@ -363,6 +375,22 @@ pass an optional error and result string to the callback:
 ```
 
 * `cb` Function callback function.
+
+#### Parser
+
+```javascript
+new Parser([opts])
+```
+
+Finds processing instructions in the stream, parses those found with
+[mkparse][] and invokes a macro function if it exists for a tag in
+the parsed processing instruction.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `preserve` Boolean=false keep processing instructions.
 
 #### replace
 
