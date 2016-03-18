@@ -1,5 +1,4 @@
-var mkast = require('mkast')
-  , Serialize = require('mkast/lib/serialize')
+var ast = require('mkast')
   , Parser = require('./lib/parser');
 
 /**
@@ -28,7 +27,7 @@ function pi(opts, cb) {
   opts.input = opts.input;
   opts.output = opts.output;
 
-  var serialize = new Serialize()
+  var serialize = ast.stringify()
     , options = {
         grammar: opts.grammar,
         serializer: serialize,
@@ -40,7 +39,7 @@ function pi(opts, cb) {
     return parser; 
   }
 
-  mkast.parser(opts.input)
+  ast.parser(opts.input)
     .pipe(parser)
     .pipe(serialize)
     .pipe(opts.output);
