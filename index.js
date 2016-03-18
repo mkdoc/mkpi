@@ -38,6 +38,7 @@ function pi(opts, cb) {
     , parser = new Parser(options);
 
   if(!opts.input && !opts.output) {
+    parser.pipeline = true;
     return parser; 
   }
 
