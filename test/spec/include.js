@@ -6,6 +6,12 @@ var fs = require('fs')
 
 describe('mkpi:', function() {
 
+  it('should return stream with no options', function(done) {
+    var stream = mkpi();
+    expect(stream).to.be.an('object');
+    done();
+  });
+
   it('should process @include pi', function(done) {
     var source = 'test/fixtures/include.md'
       , target = 'target/include.json.log'
