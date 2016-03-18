@@ -183,7 +183,7 @@ For asynchronous operations you can callback with a string to write to the strea
 ?>
 ```
 
-See the [macro api docs](https://github.com/mkdoc/mkpi/blob/master#macro-1) for more detail.
+See the [macro api docs](#macro-1) for more detail.
 
 ### Custom Macros
 
@@ -235,7 +235,7 @@ function(cb) {
 
 Note the exception that `@macro` function body definitions that return a value other than `undefined` should not call the callback.
 
-See the [grammar api docs](https://github.com/mkdoc/mkpi/blob/master#grammar-1) for more information.
+See the [grammar api docs](#grammar-1) for more information.
 
 ## API
 
