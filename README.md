@@ -31,7 +31,7 @@ ast.src('<? @exec {shell} pwd ?>')
 
 ## Example
 
-This [readme document](https://github.com/mkdoc/mkpi/README.md) ([raw version](https://raw.githubusercontent.com/mkdoc/mkpi/master/README.md)) was built from the source file [doc/readme.md](https://github.com/mkdoc/mkpi/doc/readme.md) shown below:
+This [readme document](https://github.com/mkdoc/mkpi/blob/master/README.md) ([raw version](https://raw.githubusercontent.com/mkdoc/mkpi/master/README.md)) was built from the source file [doc/readme.md](https://github.com/mkdoc/mkpi/blob/master/doc/readme.md) shown below:
 
 ```markdown
 # Processing Instructions
@@ -183,7 +183,7 @@ For asynchronous operations you can callback with a string to write to the strea
 ?>
 ```
 
-See the [macro api docs](https://github.com/mkdoc/mkpi#macro-1) for more detail.
+See the [macro api docs](https://github.com/mkdoc/mkpi/blob/master#macro-1) for more detail.
 
 ### Custom Macros
 
@@ -235,7 +235,7 @@ function(cb) {
 
 Note the exception that `@macro` function body definitions that return a value other than `undefined` should not call the callback.
 
-See the [grammar api docs](https://github.com/mkdoc/mkpi#grammar-1) for more information.
+See the [grammar api docs](https://github.com/mkdoc/mkpi/blob/master#grammar-1) for more information.
 
 ## API
 
