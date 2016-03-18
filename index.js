@@ -56,4 +56,10 @@ function pi(opts, cb) {
   return opts.output;
 }
 
+function serialize(opts) {
+  return new Serialize(opts);
+}
+
+pi.serialize = serialize;
+
 module.exports = pi;
