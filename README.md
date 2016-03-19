@@ -61,7 +61,7 @@ Using the command:
 Using the command:
 
 ```shell
-mkcat doc/readme.md | mkpi | mkgen | mkref | mkabs | mkout > README.md
+mkcat doc/readme.md | mkpi | mkmsg | mkref | mkabs | mkout > README.md
 ```
 
 ## Macros
