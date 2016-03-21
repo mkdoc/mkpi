@@ -53,7 +53,7 @@ Using the command:
 
 <? @macro {shell} return require('./package.json').scripts.readme ?>
 
-<? @include readme/macros.md ?>
+<? @include {=readme} macros.md help.md ?>
 <? @exec ./sbin/apidocs ?>
 <? @include {=readme} license.md links.md ?>
 ```
@@ -236,6 +236,20 @@ function(cb) {
 Note the exception that `@macro` function body definitions that return a value other than `undefined` should not call the callback.
 
 See the [grammar api docs](#grammar-1) for more information.
+
+## Help
+
+```
+mkpi [options]
+
+Processing instruction macros.
+
+  -p, --preserve  Do not remove processing instructions
+  -h, --help      Display this help and exit
+  --version       Print the version and exit
+
+Report bugs to https://github.com/mkdoc/mkpi/issues
+```
 
 ## API
 

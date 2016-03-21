@@ -17,6 +17,6 @@ Using the command:
 
 <? @macro {shell} return require('./package.json').scripts.readme ?>
 
-<? @include readme/macros.md ?>
+<? @include {=readme} macros.md help.md ?>
 <? @exec ./sbin/apidocs ?>
 <? @include {=readme} license.md links.md ?>
