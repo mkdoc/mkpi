@@ -15,7 +15,7 @@ describe('mkpi:', function() {
           '<? @source {} .gitignore ?>'
         ]
 
-    // NOTE: do not inject _file to change path resolution
+    // NOTE: do not inject file to change path resolution
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
@@ -30,10 +30,10 @@ describe('mkpi:', function() {
       })
 
       expect(result).to.be.an('array');
-      expect(result[1]._literal).to.eql(instructions[0]);
+      expect(result[1].literal).to.eql(instructions[0]);
 
-      expect(result[2]._info).to.eql(undefined);
-      expect(result[2]._literal)
+      expect(result[2].info).to.eql(undefined);
+      expect(result[2].literal)
         .to.eql('' + fs.readFileSync('.gitignore'));
 
       done(err);

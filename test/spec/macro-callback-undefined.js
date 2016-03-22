@@ -17,7 +17,7 @@ describe('mkpi:', function() {
 
     // mock file for correct relative path
     // mkcat normally injects this info
-    data._file = source;
+    data.file = source;
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
@@ -32,8 +32,8 @@ describe('mkpi:', function() {
       })
 
       expect(result).to.be.an('array');
-      expect(result[1]._literal).to.eql(instructions[0]);
-      expect(result[2]._type).to.eql('eof');
+      expect(result[1].literal).to.eql(instructions[0]);
+      expect(result[2].type).to.eql('eof');
       done(err);
     })
   });

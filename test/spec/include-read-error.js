@@ -14,7 +14,7 @@ describe('mkpi:', function() {
 
     // mock file for correct relative path
     // mkcat normally injects this info
-    data._file = include;
+    data.file = include;
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)

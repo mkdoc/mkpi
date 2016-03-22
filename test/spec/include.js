@@ -2,6 +2,7 @@ var fs = require('fs')
   , expect = require('chai').expect
   , mkpi = require('../../index')
   , mkast = require('mkast')
+  , Node = mkast.Node
   , Parser = mkast.Parser;
 
 describe('mkpi:', function() {
@@ -24,7 +25,7 @@ describe('mkpi:', function() {
 
     // mock file for correct relative path
     // mkcat normally injects this info
-    data._file = source;
+    data.file = source;
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
@@ -38,29 +39,31 @@ describe('mkpi:', function() {
         return JSON.parse(line); 
       })
 
+      //console.dir(result);
+
       expect(result).to.be.an('array');
-      expect(result[0]._type).to.eql('document');
-      expect(result[1]._type).to.eql('paragraph');
-      expect(result[1]._firstChild._literal).to.eql('Paragraph before.');
-      expect(result[2]._literal).to.eql(instructions[0]);
+      expect(result[0].type).to.eql(Node.DOCUMENT);
+      expect(result[1].type).to.eql(Node.PARAGRAPH);
+      expect(result[1].firstChild.literal).to.eql('Paragraph before.');
+      expect(result[2].literal).to.eql(instructions[0]);
 
       // skip the open document
 
-      expect(result[4]._level).to.eql(2);
-      expect(result[4]._firstChild._literal).to.eql('Include');
+      expect(result[4].level).to.eql(2);
+      expect(result[4].firstChild.literal).to.eql('Include');
 
       // skip the include paragraph
 
-      expect(result[6]._literal).to.eql(instructions[1]);
+      expect(result[6].literal).to.eql(instructions[1]);
 
       // skip the open document
 
-      expect(result[8]._firstChild._literal)
+      expect(result[8].firstChild.literal)
         .to.eql('This is a paragraph in a deep include.');
 
-      expect(result[result.length - 2]._firstChild._literal)
+      expect(result[result.length - 2].firstChild.literal)
         .to.eql('Paragraph after.');
-      expect(result[result.length - 1]._type).to.eql('eof');
+      expect(result[result.length - 1].type).to.eql('eof');
       done(err);
     })
   });

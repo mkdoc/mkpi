@@ -15,7 +15,7 @@ describe('mkpi:', function() {
           '<? @include .gitignore ?>',
         ]
 
-    // NOTE: do not inject _file to change path resolution
+    // NOTE: do not inject file to change path resolution
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
@@ -33,13 +33,13 @@ describe('mkpi:', function() {
 
       // skip the open document
 
-      expect(result[1]._literal).to.eql(instructions[0]);
+      expect(result[1].literal).to.eql(instructions[0]);
 
       // skip the open document
 
-      expect(result[3]._type).to.eql('paragraph');
+      expect(result[3].type).to.eql('paragraph');
 
-      expect(result[result.length - 1]._type).to.eql('eof');
+      expect(result[result.length - 1].type).to.eql('eof');
       done(err);
     })
   });

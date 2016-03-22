@@ -2,6 +2,7 @@ var fs = require('fs')
   , expect = require('chai').expect
   , mkpi = require('../../index')
   , mkast = require('mkast')
+  , Node = mkast.Node
   , Parser = mkast.Parser;
 
 describe('mkpi:', function() {
@@ -17,7 +18,7 @@ describe('mkpi:', function() {
 
     // mock file for correct relative path
     // mkcat normally injects this info
-    data._file = source;
+    data.file = source;
 
     var input = mkast.serialize(data)
       , output = fs.createWriteStream(target)
@@ -32,13 +33,13 @@ describe('mkpi:', function() {
       })
 
       expect(result).to.be.an('array');
-      expect(result[1]._literal).to.eql(instructions[0]);
+      expect(result[1].literal).to.eql(instructions[0]);
 
-      expect(result[2]._type).to.eql('code_block');
-      expect(result[2]._literal).to.eql('' + fs.readFileSync('index.js'));
-      expect(result[2]._info).to.eql('javascript');
+      expect(result[2].type).to.eql(Node.CODE_BLOCK);
+      expect(result[2].literal).to.eql('' + fs.readFileSync('index.js'));
+      expect(result[2].info).to.eql('javascript');
 
-      expect(result[3]._type).to.eql('eof');
+      expect(result[3].type).to.eql('eof');
 
       done(err);
     })
