@@ -22,6 +22,7 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 
 - [Install](#install)
 - [Usage](#usage)
+- [Security](#security)
 - [Example](#example)
 - [Macros](#macros)
    - [Grammar](#grammar)
@@ -46,6 +47,10 @@ ast.src('<? @exec {shell} pwd ?>')
   .pipe(process.stdout);
 ```
 
+## Security
+
+By default his library assumes you have trusted input. The [exec](#exec) and [macro](#macro) directives can run arbitrary commands and execute arbitrary javascript if your input is untrusted set the `safe` option and these directives are no longer recognised.
+
 ## Example
 
 This [readme document](https://github.com/mkdoc/mkpi/blob/master/README.md) ([raw version](https://raw.githubusercontent.com/mkdoc/mkpi/master/README.md)) was built from the source file [doc/readme.md](https://github.com/mkdoc/mkpi/blob/master/doc/readme.md) shown below:
@@ -67,7 +72,7 @@ This [readme document](https://github.com/mkdoc/mkpi/blob/master/README.md) ([ra
 
 <? @source {javascript=s/\.\.\/index/mkpi/gm} usage.js ?>
 
-<? @include readme/example.md ?>
+<? @include {=readme} security.md example.md ?>
 <? @source {markdown} readme.md ?>
 
 Using the command:
