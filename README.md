@@ -270,6 +270,7 @@ mkpi [options]
 
 Processing instruction macros.
 
+  -s, --safe      Disable the @exec and @macro directives
   -p, --preserve  Do not remove processing instructions
   -h, --help      Display this help and exit
   --version       Print the version and exit
