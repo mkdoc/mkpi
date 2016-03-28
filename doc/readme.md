@@ -6,6 +6,10 @@
 
 <? @include {=readme} introduction.md install.md ?>
 
+***
+<!-- @toc -->
+***
+
 ## Usage
 
 <? @source {javascript=s/\.\.\/index/mkpi/gm} usage.js ?>

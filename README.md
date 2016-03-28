@@ -18,6 +18,23 @@ npm i mkpi --save
 
 For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 
+---
+
+- [Install](#install)
+- [Usage](#usage)
+- [Example](#example)
+- [Macros](#macros)
+   - [Grammar](#grammar)
+   - [Custom Macros](#custom-macros)
+   - [Macro Functions](#macro-functions)
+- [Help](#help)
+- [API](#api)
+   - [pi](#pi)
+   - [Grammar](#grammar-1)
+- [License](#license)
+
+---
+
 ## Usage
 
 ```javascript
@@ -41,6 +58,10 @@ This [readme document](https://github.com/mkdoc/mkpi/blob/master/README.md) ([ra
 > Script markdown documents
 
 <? @include {=readme} introduction.md install.md ?>
+
+***
+<!-- @toc -->
+***
 
 ## Usage
 
