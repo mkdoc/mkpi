@@ -17,7 +17,8 @@ var ast = require('mkast')
  *  @option {Readable} [input] input stream.
  *  @option {Writable} [output] output stream.
  *  @option {Object} [grammar] grammar macro functions.
- *  @option {Boolean} [preserve] keep processing instructions in the AST.
+ *  @option {Boolean=false} [preserve] keep processing instructions in the AST.
+ *  @option {Boolean=false} [safe] disable command and code execution.
  *
  *  @returns an output stream.
  */
@@ -31,7 +32,8 @@ function pi(opts, cb) {
     , options = {
         grammar: opts.grammar,
         serializer: serialize,
-        preserve: opts.preserve
+        preserve: opts.preserve,
+        safe: opts.safe
       }
     , parser = new Parser(options);
 
