@@ -24,6 +24,14 @@ You can specify a path to include from using the tag value:
 
 Use this as shorthand when all the files to include are in the same directory.
 
+If you specify a directory to include this implementation will look for `index.md` within the directory:
+
+```xml
+<? @include path/to/folder ?>
+```
+
+Resolves to `path/to/folder/index.md` relative to the file containing the instruction.
+
 Note that file paths passed to this macro cannot include whitespace.
 
 #### @exec

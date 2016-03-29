@@ -116,6 +116,14 @@ You can specify a path to include from using the tag value:
 
 Use this as shorthand when all the files to include are in the same directory.
 
+If you specify a directory to include this implementation will look for `index.md` within the directory:
+
+```xml
+<? @include path/to/folder ?>
+```
+
+Resolves to `path/to/folder/index.md` relative to the file containing the instruction.
+
 Note that file paths passed to this macro cannot include whitespace.
 
 #### @exec
@@ -485,7 +493,7 @@ MIT
 
 ---
 
-Created by [mkdoc](https://github.com/mkdoc/mkdoc) on March 28, 2016
+Created by [mkdoc](https://github.com/mkdoc/mkdoc) on March 29, 2016
 
 [mkdoc]: https://github.com/mkdoc/mkdoc
 [mkparse]: https://github.com/mkdoc/mkparse
