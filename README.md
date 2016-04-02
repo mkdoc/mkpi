@@ -25,13 +25,13 @@ For the command line interface install [mkdoc][] globally (`npm i -g mkdoc`).
 - [Security](#security)
 - [Example](#example)
 - [Macros](#macros)
-   - [Grammar](#grammar)
-   - [Custom Macros](#custom-macros)
-   - [Macro Functions](#macro-functions)
+  - [Grammar](#grammar)
+  - [Custom Macros](#custom-macros)
+  - [Macro Functions](#macro-functions)
 - [Help](#help)
 - [API](#api)
-   - [pi](#pi)
-   - [Grammar](#grammar-1)
+  - [pi](#pi)
+  - [Grammar](#grammar-1)
 - [License](#license)
 
 ---
@@ -278,10 +278,10 @@ mkpi [options]
 
 Processing instruction macros.
 
-  -s, --safe      Disable the @exec and @macro directives
-  -p, --preserve  Do not remove processing instructions
-  -h, --help      Display this help and exit
-  --version       Print the version and exit
+  -s, --safe              Disable the @exec and @macro directives
+  -p, --preserve          Do not remove processing instructions
+  -h, --help              Display help and exit
+  --version               Print the version and exit
 
 Report bugs to https://github.com/mkdoc/mkpi/issues
 ```
@@ -493,7 +493,7 @@ MIT
 
 ---
 
-Created by [mkdoc](https://github.com/mkdoc/mkdoc) on March 29, 2016
+Created by [mkdoc](https://github.com/mkdoc/mkdoc) on April 2, 2016
 
 [mkdoc]: https://github.com/mkdoc/mkdoc
 [mkparse]: https://github.com/mkdoc/mkparse
