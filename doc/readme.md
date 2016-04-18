@@ -10,8 +10,13 @@
 <!-- @toc -->
 ***
 
-<? @include {=readme} security.md usage.md example.md sample.md ?>
+<? @include {=readme}
+    security.md 
+    usage.md 
+    example.md 
+    sample.md 
+    macros.md 
+    help.md ?>
 
-<? @include {=readme} macros.md help.md ?>
 <? @exec ./sbin/apidocs ?>
 <? @include {=readme} license.md links.md ?>
