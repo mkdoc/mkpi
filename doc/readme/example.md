@@ -1,4 +1,14 @@
 ## Example
 
-This [readme document](/README.md) ([raw version](https://raw.githubusercontent.com/mkdoc/mkpi/master/README.md)) was built from the source file [doc/readme.md](/doc/readme.md) shown below:
+Execute processing instructions in a file:
+
+```shell
+mkcat README.md | mkpi | mkout
+```
+
+Disable unsafe macros for untrusted input:
+
+```shell
+mkcat README.md | mkpi --safe | mkout
+```
 
